@@ -15,6 +15,111 @@
 
     <div id="app">
 
+        <!-- contenitore generale dell'interfaccia -->
+        <div class="cont-generale">
+
+            <!-- sezione sinistra dell'interfaccia  -->
+            <div class="sezione-contatti">
+
+                <!-- sezione in altro del proprio contatto -->
+                <div class="head">
+
+                    <div class="contatti-sx">
+                        <img src="img/avatar_io.jpg" alt="img">
+                        <strong>Pola</strong>
+                    </div>
+
+                    <div class="contatti-dx">
+                        <span><i class="fa-sharp fa-solid fa-circle-notch"></i></span>
+                        <span><i class="fa-solid fa-message"></i></span>
+                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div>
+
+                </div>
+
+                <!-- sezione per attivazione notifiche -->
+                <div class="notifiche-onOff">
+                    <div class="icona-notifica"><i class="fa-solid fa-bell-slash"></i></div>
+                    <div class="testo-notifica">
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <span>Attiva notifiche desktop</span>
+                    </div>
+                </div>
+
+                <!-- barra di ricerca chat -->
+                <div class="ricerca-chat">
+                    <button class="bottone-ricerca"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" class="input-ricerca" placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <!-- sezione lista dei contatti di chat gia avute -->
+                <div class="cont-lista-contatti">
+                    <!-- lista non ordinata dei contatti -->
+                    <ul class="lista-contatti">
+                        <!-- ciclo che crea i vari contatti in un 'li'
+                                                                    evento click che assegna l'index ricavato dal ciclo al valore vuoto (indexActive)
+                                                                                                v-bind sulla classe con un ternario per regolare la visione della chat attiva assegnando una una classe dedicata (active)-->
+                        <li  v-for="(contatto,index) in contatti" @click="indexActive = index" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">
+                                <!-- regola l'immagine da visualizzare  -->
+                                <img :src=contatto.avatar alt="img">
+
+                                <div class="interno-contatto">
+                                    <!-- fa visualizzare il nome  -->
+                                    <strong>{{contatto.name}}</strong>
+
+                        <!-- test: messaggio e orario preso provvisoriamente -->
+                                    <span>{{contatto.messages[0].message}}</span>
+                                </div>
+                                <span class="orario">{{
+                                    contatto.messages[0].date[11]
+                                    + contatto.messages[0].date[12] 
+                                    + contatto.messages[0].date[13]
+                                    + contatto.messages[0].date[14]
+                                    + contatto.messages[0].date[15] 
+                                    }}
+                                </span>
+                        <!-- test: messaggio e orario preso provvisoriamente -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- sezione destra dell'interfaccia -->
+            <div class="sezione-chat-attiva">
+
+                <!-- sezione con il contatto della chat attiva con cui si chatta -->
+                <div class="head">
+                    <div class="contatti-sx">
+                        <img :src=contatti[indexActive].avatar alt="img">
+                        <strong>{{contatti[indexActive].name}}</strong>
+                    </div>
+                    <div class="contatti-dx">
+                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <span><i class="fa-solid fa-paperclip"></i></span>
+                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div>
+                </div>
+                    
+                <!-- sezione in cui si visualizzano i vari messaggi inviati e ricevuto della chat attiva -->
+                <div class="chat-attiva">
+                    <!-- ciclo che crea in pagina i messaggi presenti in memoria con quel contatto -->
+                    <div v-for="messaggio in contatti[indexActive].messages" :class=" messaggio.status == 'sent' ? 'sent' : 'received'" >
+                            <span :class="messaggio.status == 'sent' ? 'green' : 'white'" class="message" >{{messaggio.message}}</span> 
+                    </div>
+                
+                </div>
+                
+                <!-- sezione input di nuovi messaggi in basso  -->
+                <div class="chat-bar">
+                    
+                    <button class="bottone-emoticons"><i class="fa-regular fa-face-smile"></i></button>
+                    <input v-model="nuovoMessaggio" @keyup.enter="addMessage()" class="input-chat" type="text">
+                    <button class="bottone-microfono"><i class="fa-solid fa-microphone"></i></button>
+
+                </div>
+            </div>
+
+        </div>
 
     </div>
 

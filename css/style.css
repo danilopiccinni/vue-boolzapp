@@ -1,5 +1,259 @@
+/* Reset generale */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* ----------------------------------------------------------------------------- */
+/* interfaccia completa dell'app */
+.cont-generale {
+    display: flex;
+    flex-wrap: nowrap;
+
+    max-width: 70%;
+    margin: 50px auto;
+    
+    /* test */
+    width: 1000px;
+    height: 600px;
+    border: 0.5px solid rgba(198, 198, 198, 0.681);
+}
+/* / interfaccia completa dell'app */
+/* ----------------------------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------------------------- */
+/* sezione sinistra (contatti) */
+.sezione-contatti {
+
+    border-right: 0.5px solid rgba(198, 198, 198, 0.681);
+
+    display: flex;
+    flex-direction: column;
+    
+    min-width: 35%;
+
+    background-color: fafafa;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 8%;
+    background-color: #eaeaea;
+}
+
+.contatti-sx {
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.contatti-dx {
+
+    display: flex;
+    gap: 12px;
+
+    padding-right: 10px;
+}
+
+.notifiche-onOff {
+
+    display: flex;
+    align-items: center;
+
+    height: 10%;
+    background-color: #8edafc;
+    padding-left: 15px;
+
+}
+
+.icona-notifica {
+
+    font-size: 20px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.testo-notifica {
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+}
+
+.ricerca-chat {
+
+    display: flex;
+
+    padding: 3px;
+    border-bottom: 0.5px gray solid;;
+
+}
+
+.bottone-ricerca {
+
+    background-color: transparent;
+    border: none;
+    width: 15%;
+    padding: 4px;
+}
+
+.fa-magnifying-glass {
+
+    font-size: 15px;
+}
+
+
+.input-ricerca {
+
+    width: 85%;
+}
+
+.interno-contatto {
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.interno-contatto span {
+
+    font-size: 10px;
+}
+
+/* / sezione sinistra (contatti) */
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* ----------------------------------------------------------------------------- */
+/* sezione destra (chat attiva) */
+.sezione-chat-attiva {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 65%;
+}
+
+.chat-attiva { 
+    
+    height: calc((100% - 8%) - 50px);
+    background-image: url(../img/mine.jpg);
+
+}
+
+.chat-bar {
+
+    display: flex;
+
+    align-items: center;
+
+
+    height: 50px;
+    background-color: #f3eeea;
+}
+
+.bottone-emoticons {
+
+    background-color: #f3eeea;
+    border: none;
+    height: 80%;
+    width: 10%;
+}
+
+.bottone-microfono {
+
+    background-color: #f3eeea;
+    border: none;
+    height: 80%;
+    width: 10%;
+
+}
+
+.input-chat {
+
+    height: 80%;
+    width: calc(100% - 60px);
+}
+
+img {
+
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+li {
+
+    display: flex;
+    justify-content: space-between;
+    
+    border-bottom: 0.5px gray solid;
+    height: 45px;
+    list-style-type: none;
+}
+
+.active {
+
+    background-color: #e9ebeb;
+}
+
+.message {
+    
+    padding: 1em 0.5em;
+    margin: 10px;
+    border-radius: 12px;
+}
+/* ---------------- */
+
+
+/* ---------------- */
+/* classi date in base se 
+il messaggio è ricevuto o inviato */
+.white {
+    
+    background-color: white;
+}
+
+.sent {
+    
+    display: flex;
+    
+    justify-content: end;
+}
+
+.received {
+    
+    display: flex;
+    
+    justify-content: flex-start;
+    
+}
+.green {
+    
+    background-color: green;
+}
+/* ---------------- */
+
+/* ---------------- */
+/* / sezione destra (chat attiva) */
+/* ----------------------------------------------------------------------------- */
+
+
+
+
+
+/* ----------------------------------------------------------------------------- */
