@@ -188,6 +188,19 @@ createApp({
             this.contatti[this.maxActiveIndex].messages.push(newmessage)
             
             this.nuovoMessaggio = ''
+
+            setTimeout(this.rispostabot , 1000)
+        },
+
+        rispostabot() {
+            const newmessage = {
+                date : 'nuovo',
+                message : 'ok',
+                status : 'received',
+            }
+
+            this.contatti[this.maxActiveIndex].messages.push(newmessage)
+
         }
 
     }
