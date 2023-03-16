@@ -187,6 +187,7 @@ createApp({
 
             this.contatti[this.maxActiveIndex].messages.push(newmessage)
             
+            this.nuovoMessaggio = ''
         }
 
     }
