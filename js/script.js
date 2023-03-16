@@ -179,13 +179,14 @@ createApp({
     methods : {
 
         addMessage() {
+
             const newmessage = {
                 date : 'nuovo',
                 message : this.nuovoMessaggio,
                 status : 'sent'
             }
 
-            this.contatti[this.maxActiveIndex].messages.push(newmessage)
+            this.contatti[this.indexActive].messages.push(newmessage)
             
             this.nuovoMessaggio = ''
 
@@ -193,13 +194,13 @@ createApp({
         },
 
         rispostabot() {
-            const newmessage = {
+            const newmessagebot = {
                 date : 'nuovo',
                 message : 'ok',
                 status : 'received',
             }
 
-            this.contatti[this.maxActiveIndex].messages.push(newmessage)
+            this.contatti[this.indexActive].messages.push(newmessagebot)
 
         }
 
