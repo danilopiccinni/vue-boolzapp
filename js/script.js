@@ -3,11 +3,10 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-
-            // indice che mi aiuta a regolare la chat attiva
+            
             indexActive : 0,
+            maxActiveIndex : 0,
 
-            // spazio vuoto che con il 'v-model' sincronizza quello che viene scritto per poi essere inviato
             nuovoMessaggio : '' ,
             
             contatti: [
@@ -179,7 +178,6 @@ createApp({
 
     methods : {
 
-        // funtione che aggiunge un nuovo messaggio inviato alla chat soprastante
         addMessage() {
             const newmessage = {
                 date : 'nuovo',
@@ -187,11 +185,8 @@ createApp({
                 status : 'sent'
             }
 
-            // aggiunge il nuovo messaggio 
-            this.contatti[this.maxActiveIndex].messages.push(newmessage);
-
-            // cancella l'input
-            this.nuovoMessaggio = ''
+            this.contatti[this.maxActiveIndex].messages.push(newmessage)
+            
         }
 
     }
