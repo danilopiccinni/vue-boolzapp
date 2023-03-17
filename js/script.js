@@ -247,11 +247,9 @@ createApp({
 
         filtraRicerca(contatto) {
 
-
             return contatto.name.toUpperCase().includes(this.ricerca.toUpperCase())
 
-        }
-
+        },
 
 
     }

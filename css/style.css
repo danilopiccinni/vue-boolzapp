@@ -180,6 +180,10 @@ img {
     align-self:baseline;
 }
 
+.lista-contatti {
+    padding-left: 0;
+}
+
 li {
 
     display: flex;
@@ -269,14 +273,38 @@ li {
     background-color: #e9ebeb;
 }
 
+.orario-messaggio {
+
+    align-self: baseline;
+    
+
+
+}
 
 
 .message {
+    display: flex;
+    gap: 5px;
+    position: relative;
     max-width: 60%;
     word-wrap: break-word;
     padding: 0.5em 0.5em;
     margin: 10px;
     border-radius: 12px;
+}
+
+.dropdown-toggle {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+
+    display: none;
+}
+
+.message:hover .dropdown-toggle {
+    display: block;
 }
 
 
@@ -320,3 +348,5 @@ il messaggio è ricevuto o inviato */
 
 
 /* ----------------------------------------------------------------------------- */
+
+
