@@ -201,7 +201,22 @@ createApp({
             }
 
             this.contatti[this.indexActive].messages.push(newmessagebot)
+            
+        },
 
+        prendiOrario(contatto) {
+            ultimomess= contatto.messages.length - 1
+            return orario =
+            contatto.messages[ultimomess].date[11]
+            + contatto.messages[ultimomess].date[12] 
+            + contatto.messages[ultimomess].date[13]
+            + contatto.messages[ultimomess].date[14]
+            + contatto.messages[ultimomess].date[15] 
+        },
+
+        prendiUltimoMess(contatto) {
+            ultimomess= contatto.messages.length - 1
+            return ultimomess = contatto.messages[ultimomess].message
         }
 
     }
