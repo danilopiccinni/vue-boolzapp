@@ -95,10 +95,7 @@ https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js
                 <div class="head">
                     <div class="contatti-sx">
                         <img :src=contatti[indexActive].avatar alt="img">
-                     
-                        <br>
-                        
-                   
+
                         <div class="interno-contatto">
                             <!-- fa visualizzare il nome  -->
                             <strong>{{contatti[indexActive].name}}</strong> 
@@ -109,12 +106,6 @@ https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js
                                 <span>Ultimo accesso {{ prendiOrario(contatti[indexActive]) }}</span>
                             </span>
                         </div>
-                   
-                   
-                   
-                   
-                   
-                   
                    
                     </div>
                     <div class="contatti-dx">
@@ -127,8 +118,11 @@ https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js
                 <!-- sezione in cui si visualizzano i vari messaggi inviati e ricevuto della chat attiva -->
                 <div class="chat-attiva">
                     <!-- ciclo che crea in pagina i messaggi presenti in memoria con quel contatto -->
-                    <div v-for="messaggio in contatti[indexActive].messages" :class=" messaggio.status == 'sent' ? 'sent' : 'received'" >
-                            <span :class="messaggio.status == 'sent' ? 'green' : 'white'" class="message" >{{messaggio.message}} {{prendiOrarioMessaggio(messaggio)}}</span> 
+                    <div v-for="messaggio in contatti[indexActive].messages" :class=" messaggio.status == 'sent' ? 'sent' : 'received'" class="messaggio">
+                            <span :class="messaggio.status == 'sent' ? 'green' : 'white'" class="message" >{{messaggio.message}}
+                                <span class="orario orario-messaggio">{{prendiOrarioMessaggio(messaggio)}}</span>
+                                
+                            </span> 
                     </div>
                 
                 </div>
