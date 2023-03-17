@@ -350,3 +350,10 @@ il messaggio è ricevuto o inviato */
 /* ----------------------------------------------------------------------------- */
 
 
+ul:hover,
+i:hover,
+.testo-notifica-2:hover,
+img {
+    cursor: pointer;
+}
+
