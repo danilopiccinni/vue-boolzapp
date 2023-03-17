@@ -195,7 +195,7 @@ li {
 }
 
 .chat-attiva { 
-    
+    overflow-y:scroll;
     height: calc((100% - 8%) - 50px);
     background-image: url(../img/mine.jpg);
 
