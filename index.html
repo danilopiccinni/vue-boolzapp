@@ -91,7 +91,27 @@
                 <div class="head">
                     <div class="contatti-sx">
                         <img :src=contatti[indexActive].avatar alt="img">
-                        <strong>{{contatti[indexActive].name}}</strong>
+                     
+                        <br>
+                        
+                   
+                        <div class="interno-contatto">
+                            <!-- fa visualizzare il nome  -->
+                            <strong>{{contatti[indexActive].name}}</strong> 
+
+                <!-- info ultimo messaggio sotto il contatto -->
+                            <span class="ultimo-messaggio">
+                                <!-- visualizza l'ultimo messaggio riguardante quella chat -->
+                                <span>Ultimo accesso {{ prendiOrario(contatti[indexActive]) }}</span>
+                            </span>
+                        </div>
+                   
+                   
+                   
+                   
+                   
+                   
+                   
                     </div>
                     <div class="contatti-dx">
                         <span><i class="fa-solid fa-magnifying-glass"></i></span>
