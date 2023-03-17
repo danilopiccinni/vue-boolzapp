@@ -121,7 +121,7 @@
                     <!-- ciclo che crea in pagina i messaggi presenti in memoria con quel contatto -->
                     <div v-for="(messaggio , index) in contatti[indexActive].messages" :class=" messaggio.status == 'sent' ? 'sent' : 'received'" class="messaggio">
                         <div :class="messaggio.status == 'sent' ? 'green' : 'white'" class="message" >
-                            <span>{{messaggio.message}}</span>  
+                            <span class="testo-messaggio">{{messaggio.message}}</span>  
                             <span class="orario orario-messaggio">{{prendiOrarioMessaggio(messaggio)}}</span>
                             <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
                             <div class="btn-group">
