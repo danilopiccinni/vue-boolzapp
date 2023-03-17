@@ -14,8 +14,8 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <div id="app">
-
-        <!-- contenitore generale dell'interfaccia -->
+        <div id="background">
+             <!-- contenitore generale dell'interfaccia -->
         <div class="cont-generale">
 
             <!-- sezione sinistra dell'interfaccia  -->
@@ -48,8 +48,10 @@
 
                 <!-- barra di ricerca chat -->
                 <div class="ricerca-chat">
+
                     <button class="bottone-ricerca"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <input type="text" class="input-ricerca" placeholder="Cerca o inizia una nuova chat">
+                
                 </div>
                 <!-- sezione lista dei contatti di chat gia avute -->
                 <div class="cont-lista-contatti">
@@ -58,7 +60,7 @@
                         <!-- ciclo che crea i vari contatti in un 'li'
                                                                     evento click che assegna l'index ricavato dal ciclo al valore vuoto (indexActive)
                                                                                                 v-bind sulla classe con un ternario per regolare la visione della chat attiva assegnando una una classe dedicata (active)-->
-                        <li  v-for="(contatto,index) in contatti" @click="indexActive = index" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">
+                        <li  v-for="(contatto,index) in contatti"  @click="indexActive = index" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">
                                 <!-- regola l'immagine da visualizzare  -->
                                 <img :src=contatto.avatar alt="img">
 
@@ -102,7 +104,7 @@
                 <div class="chat-attiva">
                     <!-- ciclo che crea in pagina i messaggi presenti in memoria con quel contatto -->
                     <div v-for="messaggio in contatti[indexActive].messages" :class=" messaggio.status == 'sent' ? 'sent' : 'received'" >
-                            <span :class="messaggio.status == 'sent' ? 'green' : 'white'" class="message" >{{messaggio.message}}</span> 
+                            <span :class="messaggio.status == 'sent' ? 'green' : 'white'" class="message" >{{messaggio.message}} {{prendiOrarioMessaggio(messaggio)}}</span> 
                     </div>
                 
                 </div>
@@ -118,6 +120,8 @@
             </div>
 
         </div>
+        </div>
+       
 
     </div>
 

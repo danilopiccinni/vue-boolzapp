@@ -8,7 +8,7 @@ createApp({
             maxActiveIndex : 0,
 
             nuovoMessaggio : '' ,
-            
+
             contatti: [
                 {
                     name: 'Michele',
@@ -171,8 +171,9 @@ createApp({
                         }
                     ],
                 }
-            ]
-            
+            ],
+
+
         }
     },
 
@@ -204,6 +205,15 @@ createApp({
             
         },
 
+        prendiOrarioMessaggio(messaggio) {
+            return orario =
+            messaggio.date[11]
+            + messaggio.date[12] 
+            + messaggio.date[13]
+            + messaggio.date[14]
+            + messaggio.date[15] 
+        },
+
         prendiOrario(contatto) {
             ultimomess= contatto.messages.length - 1
             return orario =
@@ -217,7 +227,11 @@ createApp({
         prendiUltimoMess(contatto) {
             ultimomess= contatto.messages.length - 1
             return ultimomess = contatto.messages[ultimomess].message
-        }
+        },
+
+
+
+
 
     }
 }).mount('#app')
