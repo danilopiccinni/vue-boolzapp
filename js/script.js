@@ -245,9 +245,14 @@ createApp({
 
         },
 
-        filtarRicerca() {
-            presenti = this.contatti.filter(persone => persone.name.includes(this.ricerca))
+        filtraRicerca(contatto) {
+
+
+            return contatto.name.toUpperCase().includes(this.ricerca.toUpperCase())
+
         }
+
+
 
     }
 }).mount('#app')

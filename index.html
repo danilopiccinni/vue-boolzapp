@@ -54,7 +54,7 @@ https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js
                 <div class="ricerca-chat">
 
                     <button class="bottone-ricerca"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" class="input-ricerca" placeholder="Cerca o inizia una nuova chat">
+                    <input v-model="ricerca" type="text" class="input-ricerca" placeholder="Cerca o inizia una nuova chat">
                 
                 </div>
                 <!-- sezione lista dei contatti di chat gia avute -->
@@ -64,7 +64,7 @@ https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js
                         <!-- ciclo che crea i vari contatti in un 'li'
                                                                     evento click che assegna l'index ricavato dal ciclo al valore vuoto (indexActive)
                                                                                                 v-bind sulla classe con un ternario per regolare la visione della chat attiva assegnando una una classe dedicata (active)-->
-                        <li  v-for="(contatto,index) in contatti"  @click="indexActive = index" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">
+                        <li  v-for="(contatto,index) in contatti" v-show="filtraRicerca(contatto)"  @click="indexActive = index" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">
                                 <!-- regola l'immagine da visualizzare  -->
                                 <img :src=contatto.avatar alt="img">
 
