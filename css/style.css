@@ -8,6 +8,14 @@
 
 
 
+img {
+
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+
 /* ----------------------------------------------------------------------------- */
 /* interfaccia completa dell'app */
 .cont-generale {
@@ -62,7 +70,7 @@
 
     display: flex;
     gap: 12px;
-
+    color: #b1b1b1;
     padding-right: 10px;
 }
 
@@ -79,10 +87,14 @@
 
 .icona-notifica {
 
-    font-size: 20px;
     background-color: white;
     border-radius: 50%;
-    padding: 5px;
+    padding: 10px;
+}
+
+.fa-bell-slash {
+
+    color: #8edafc;
 }
 
 .testo-notifica {
@@ -92,19 +104,32 @@
     padding-left: 5px;
 }
 
+.testo-notifica-1 {
+    font-size: 15px;
+}
+
+.testo-notifica-2 {
+    text-decoration: underline;
+    font-size: 12px;
+    color: #b1b1b1;
+}
+
 .ricerca-chat {
 
     display: flex;
 
+
     padding: 3px;
-    border-bottom: 0.5px gray solid;;
+    border-bottom: 0.5px rgba(128, 128, 128, 0.277) solid;
 
 }
 
 .bottone-ricerca {
+    border: 0.5px rgba(128, 128, 128, 0.277) solid;
 
     background-color: transparent;
-    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     width: 15%;
     padding: 4px;
 }
@@ -114,22 +139,43 @@
     font-size: 15px;
 }
 
-
 .input-ricerca {
-
     width: 85%;
+
+    font-size: 10px;
+    padding-left: 10px;
+    border: 0.5px rgba(128, 128, 128, 0.277) solid;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .interno-contatto {
 
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+
+    padding-left: 10px;
+}
+
+.ultimo-messaggio {
+    color: #b1b1b1;
 }
 
 .interno-contatto span {
 
     font-size: 10px;
+}
+
+li {
+
+    display: flex;
+    justify-content: space-between;
+    
+    border-bottom: 0.5px rgba(128, 128, 128, 0.277) solid;
+
+    height: 50px;
+    list-style-type: none;
 }
 
 /* / sezione sinistra (contatti) */
@@ -183,28 +229,28 @@
 
 }
 
+.fa-microphone {
+    color: #b1b1b1;
+    font-size: 20px;
+}
+
 .input-chat {
 
     height: 80%;
     width: calc(100% - 60px);
+
+    border: none;
+    border-radius: 5px;
+
+    padding-left: 10px;
 }
 
-img {
+.fa-face-smile {
+    color: #b1b1b1;
+    font-size: 20px;
 
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
 }
 
-li {
-
-    display: flex;
-    justify-content: space-between;
-    
-    border-bottom: 0.5px gray solid;
-    height: 45px;
-    list-style-type: none;
-}
 
 .active {
 
