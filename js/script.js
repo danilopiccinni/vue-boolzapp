@@ -9,6 +9,8 @@ createApp({
 
             nuovoMessaggio : '' ,
 
+            ricerca : '',
+
             contatti: [
                 {
                     name: 'Michele',
@@ -181,8 +183,12 @@ createApp({
 
         addMessage() {
 
+            const DataOra = luxon.DateTime;
+
+            let DataOraCorrente = DataOra.now().toString('dd/mm/yyyy HH:mm:ss')
+
             const newmessage = {
-                date: '10/01/2020 15:30:55',
+                date: DataOraCorrente,
                 message : this.nuovoMessaggio,
                 status : 'sent'
             }
@@ -195,12 +201,21 @@ createApp({
         },
 
         rispostabot() {
+
+            const DataOra = luxon.DateTime;
+
+            let DataOraCorrente = DataOra.now().toString('dd/mm/yyyy HH:mm:ss')
             const newmessagebot = {
-                date: '10/01/2020 15:31:55',
+                date: DataOraCorrente,
                 message : 'ok',
                 status : 'received',
             }
 
+      
+
+            console.log(newmessagebot.date)
+
+            console.log()
             this.contatti[this.indexActive].messages.push(newmessagebot)
             
         },
@@ -225,13 +240,14 @@ createApp({
         },
 
         prendiUltimoMess(contatto) {
-            ultimomess= contatto.messages.length - 1
-            return ultimomess = contatto.messages[ultimomess].message
+            // ultimomess= contatto.messages.length - 1
+            return contatto.messages[contatto.messages.length - 1].message
+
         },
 
-
-
-
+        filtarRicerca() {
+            presenti = this.contatti.filter(persone => persone.name.includes(this.ricerca))
+        }
 
     }
 }).mount('#app')
