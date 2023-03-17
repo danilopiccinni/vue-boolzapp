@@ -251,6 +251,12 @@ createApp({
 
         },
 
+        eliminaMessaggio(index) {
+
+            this.contatti[this.indexActive].messages.splice(index , 1)
+
+        }
+
 
     }
 }).mount('#app')
