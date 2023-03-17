@@ -181,7 +181,7 @@ createApp({
         addMessage() {
 
             const newmessage = {
-                date : 'nuovo',
+                date: '10/01/2020 15:30:55',
                 message : this.nuovoMessaggio,
                 status : 'sent'
             }
@@ -195,7 +195,7 @@ createApp({
 
         rispostabot() {
             const newmessagebot = {
-                date : 'nuovo',
+                date: '10/01/2020 15:31:55',
                 message : 'ok',
                 status : 'received',
             }
