@@ -275,7 +275,9 @@ li {
 
 .orario-messaggio {
 
-    align-self: baseline;
+    align-self: flex-end;
+
+    font-size: 8px;
     
 }
 
@@ -284,13 +286,21 @@ li {
         word-wrap: break-word;
 }
 
+.messaggio {
+
+}
+
 
 .message {
-    display: flex;
-    gap: 5px;
     position: relative;
-    max-width: 60%;
-    word-wrap:normal;
+
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+
+    word-wrap:break-word;
+    
+    max-width: 70%;
     padding: 0.5em 0.5em;
     margin: 10px;
     border-radius: 12px;
