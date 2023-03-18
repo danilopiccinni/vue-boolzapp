@@ -311,25 +311,30 @@ createApp({
 
         // funzione dedicata a estrarre l'orario dell'ultimo messaggio, utile a visualizzarlo
         prendiOrario(contatto) {
-            ultimomess= contatto.messages.length - 1
+            // condizione che controlla se ci siano ancora ultimi messaggi da vui prendere un orrario
+            if (contatto.messages.length != 0) {
+                // se è vero entra e si crea un indice massimo che si puo' trovare attualmente nell'array dei messaggi
+                ultimomess= contatto.messages.length - 1
+                // restituisce l'orario 
+                return orario = contatto.messages[ultimomess].date[11]
+                                + contatto.messages[ultimomess].date[12] 
+                                + contatto.messages[ultimomess].date[13]
+                                + contatto.messages[ultimomess].date[14]
+                                + contatto.messages[ultimomess].date[15] 
+            } 
 
-            return orario = contatto.messages[ultimomess].date[11]
-                            + contatto.messages[ultimomess].date[12] 
-                            + contatto.messages[ultimomess].date[13]
-                            + contatto.messages[ultimomess].date[14]
-                            + contatto.messages[ultimomess].date[15] 
         },
 
         // funzione dedicata a estrarre e visualizzare l'ultimo messaggio della chat per poi visualizzarla sotto ogni contatto
         prendiUltimoMess(contatto) {   
             // condizione che controlla se la lunghezza dell'array dei messaggi del contatto è uguale a 1
-            if (contatto.messages.length == 1) {
-                // se vero da un campo vuoto sotto il contatto 
-                return ''
-                
-            } else {
+            if (contatto.messages.length != 0) {
                 // prende l'ultimo messaggio ancora presente 
                 return contatto.messages[contatto.messages.length - 1].message
+                
+            } else {
+                // se vero da un campo vuoto sotto il contatto 
+                return ''
             }
 
         },
