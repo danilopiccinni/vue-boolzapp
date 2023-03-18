@@ -1,24 +1,23 @@
-
-
 const { createApp } = Vue
 
 createApp({
     data() {
         return {
-            
+
+            // valore ('indice') che aiuta a regolare la chat attiva ('active') visualizzata 
             indexActive : 0,
-            maxActiveIndex : 0,
-
+            // vaolore dichiarato inizialmente vuoto collegato con il v-model a un input in pagina dedicata a inserire un nuovo messaggio da inviare
             nuovoMessaggio : '' ,
-
+            // valore dichiarato inizialmente vuoto collegato con il v-model a un input in pagina dedicata alla ricerca per filtrare la vista dei contatti
             ricerca : '',
-
+            // funzione che serve a tenere giu la scrollbarr mano mano che si inviano messaggi
             scroll : scrollTo(0,10000),
         // forma js puro
             // let scroll = document.getElementById('chat-attiva')
             // scroll = scrollTo(0,10000)
         // forma js puro
 
+            // elenco dei contatti con tutti i dati utili
             contatti: [
                 {
                     name: 'Michele',
@@ -135,11 +134,11 @@ createApp({
                             message: 'Non ancora',
                             status: 'received'
                         },
-                            {
-                                date: '10/01/2020 15:51:00',
-                                message: 'Nessuna nuova, buona nuova',
-                                status: 'sent'
-                            }
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'Nessuna nuova, buona nuova',
+                            status: 'sent'
+                        }
                     ],
                 },
                 {
@@ -244,114 +243,113 @@ createApp({
                             message: 'Non ancora',
                             status: 'received'
                         },
-                            {
-                                date: '10/01/2020 15:51:00',
-                                message: 'Nessuna nuova, buona nuova',
-                                status: 'sent'
-                            }
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'Nessuna nuova, buona nuova',
+                            status: 'sent'
+                        }
                     ],
                 },
             ],
-
-
         }
     },
 
     methods : {
 
+        // funzione dedicata all'invio del nuovo messaggio da inviare (evento 'keyup' sul tasto enter)
         addMessage() {
-
+            // controllo che impedisce di inviare un messsaggio vuoto
             if (this.nuovoMessaggio == '') {
+                // se è vero entra qui e quindi non esegue niente
+            } else 
+            {    // se la condizione è falsa entra qui e esegue l'invio e l'aggiunta del messaggio in memoria
 
-            } else {
-
+                // constante che prende la data effettiva in quel momento che richiama la funzione tramite luxon
                 const DataOra = luxon.DateTime;
-    
+                // variabile creata al momento utile alla trasformazione della data e ora nel formato in cui ci è piu' utile
                 let DataOraCorrente = DataOra.now().toString('dd/mm/yyyy HH:mm:ss')
-    
+                // costante/oggetto che crea un nuovo messaggio che ha al suo interno la data appena preparata e il nuovo messaggio inserito nell'input dall'utente 
                 const newmessage = {
                     date: DataOraCorrente,
                     message : this.nuovoMessaggio,
                     status : 'sent'
                 }
-    
+                // aggiunge in memoria il nuovo messaggio creato prima 'newmessage'
                 this.contatti[this.indexActive].messages.push(newmessage)
-                
+                // svuota il campo di input chat
                 this.nuovoMessaggio = ''
-    
+                // un timer che ritorna una risposta automatica 
                 setTimeout(this.rispostabot , 1000)
             }
-
         },
 
+        // funzione dedicata alla risposta automatica del computer
         rispostabot() {
-
+            // constante che prende la data effettiva in quel momento che richiama la funzione tramite luxon
             const DataOra = luxon.DateTime;
-
+            // variabile creata al momento utile alla trasformazione della data e ora nel formato in cui ci è piu' utile
             let DataOraCorrente = DataOra.now().toString('dd/mm/yyyy HH:mm:ss')
+            // costante/oggetto che crea un nuovo messaggio che ha al suo interno la data appena preparata e il messaggio standard 'ok'
             const newmessagebot = {
                 date: DataOraCorrente,
                 message : 'ok',
                 status : 'received',
             }
-
-      
-
-            console.log(newmessagebot.date)
-
-            console.log()
+            // aggiunge in memoria il nuovo messaggio creato prima 'newmessagebot'
             this.contatti[this.indexActive].messages.push(newmessagebot)
             
         },
 
+        // funzione dedicata a estrarre l'orario del messaggio, utile a visualizzarlo
         prendiOrarioMessaggio(messaggio) {
-            return orario =
-            messaggio.date[11]
-            + messaggio.date[12] 
-            + messaggio.date[13]
-            + messaggio.date[14]
-            + messaggio.date[15] 
+            return orario = messaggio.date[11]
+                            + messaggio.date[12] 
+                            + messaggio.date[13]
+                            + messaggio.date[14]
+                            + messaggio.date[15] 
         },
 
+        // funzione dedicata a estrarre l'orario dell'ultimo messaggio, utile a visualizzarlo
         prendiOrario(contatto) {
             ultimomess= contatto.messages.length - 1
-            return orario =
-            contatto.messages[ultimomess].date[11]
-            + contatto.messages[ultimomess].date[12] 
-            + contatto.messages[ultimomess].date[13]
-            + contatto.messages[ultimomess].date[14]
-            + contatto.messages[ultimomess].date[15] 
+
+            return orario = contatto.messages[ultimomess].date[11]
+                            + contatto.messages[ultimomess].date[12] 
+                            + contatto.messages[ultimomess].date[13]
+                            + contatto.messages[ultimomess].date[14]
+                            + contatto.messages[ultimomess].date[15] 
         },
 
-        prendiUltimoMess(contatto) {
+        // funzione dedicata a estrarre e visualizzare l'ultimo messaggio della chat per poi visualizzarla sotto ogni contatto
+        prendiUltimoMess(contatto) {   
+            // condizione che controlla se la lunghezza dell'array dei messaggi del contatto è uguale a 1
             if (contatto.messages.length == 1) {
-
-                return 'nessun messaggio'
+                // se vero da un campo vuoto sotto il contatto 
+                return ''
                 
             } else {
-
+                // prende l'ultimo messaggio ancora presente 
                 return contatto.messages[contatto.messages.length - 1].message
             }
 
         },
 
+        // funzione dedicata al filtraggio della ricerca dei contatti
         filtraRicerca(contatto) {
-
+            // ritorna un true o false controllando mettendo tutto maiuscolo se la ricerca è inclusa nell'elenco dei contatti
             return contatto.name.toUpperCase().includes(this.ricerca.toUpperCase())
-
         },
 
+        // funzione dedicata all'eliminazione di un messaggio
         eliminaMessaggio(index) {
-
-                this.contatti[this.indexActive].messages.splice(index , 1)
-
+            // elimina (con metodo splice) il messaggio in questione gestito con il parametro indice che gli passiamo con la funzione 
+            this.contatti[this.indexActive].messages.splice(index , 1)
         },
 
+        // funzione dedicata allo scroll in basso (per ora superflua)
         scrollaGiu() {
             scroll = scrollTo(0,10000)
         }
-
-
 
     },
 
