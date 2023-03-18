@@ -45,7 +45,9 @@ img {
 
 
 /* ----------------------------------------------------------------------------- */
-/* sezione sinistra (contatti) */
+/* sezione contatti (sinistra) */
+
+/* ------------- */
 .sezione-contatti {
 
     display: flex;
@@ -57,6 +59,20 @@ img {
     border-right: 0.5px solid rgba(198, 198, 198, 0.681);
 }
 
+li {
+
+    display: flex;
+    justify-content: space-between;
+    
+    border-bottom: 0.5px rgba(128, 128, 128, 0.277) solid;
+
+    height: 50px;
+    list-style-type: none;
+}
+/* ------------- */
+
+
+/* ---- */
 .head {
 
     display: flex;
@@ -66,7 +82,10 @@ img {
     height: 8%;
     background-color: #eaeaea;
 }
+/* ---- */
 
+
+/* ---- */
 .contatti-sx {
 
     display: flex;
@@ -83,7 +102,10 @@ img {
     color: #b1b1b1;
     padding-right: 10px;
 }
+/* ---- */
 
+
+/* ---- */
 .notifiche-onOff {
 
     display: flex;
@@ -125,7 +147,10 @@ img {
     font-size: 12px;
     color: #b1b1b1;
 }
+/* ---- */
 
+
+/* ---- */
 .ricerca-chat {
 
     display: flex;
@@ -148,7 +173,7 @@ img {
 }
 
 .fa-magnifying-glass {
-
+    color: #b1b1b1;
     font-size: 15px;
 }
 
@@ -161,7 +186,10 @@ img {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+/* ---- */
 
+
+/* ---- */
 .interno-contatto {
 
     display: flex;
@@ -198,17 +226,11 @@ img {
     padding-left: 0;
 }
 
-li {
+.active {
 
-    display: flex;
-    justify-content: space-between;
-    
-    border-bottom: 0.5px rgba(128, 128, 128, 0.277) solid;
-
-    height: 50px;
-    list-style-type: none;
+    background-color: #e9ebeb;
 }
-
+/* ---- */
 /* / sezione sinistra (contatti) */
 /* ----------------------------------------------------------------------------- */
 
@@ -216,6 +238,8 @@ li {
 
 /* ----------------------------------------------------------------------------- */
 /* sezione destra (chat attiva) */
+
+/* ---- */
 .sezione-chat-attiva {
 
     display: flex;
@@ -239,7 +263,10 @@ li {
 .chat-attiva > div:last-child {
     scroll-snap-align: end;
 }
+/* ---- */
 
+
+/* ---- */
 .chat-bar {
 
     display: flex;
@@ -259,18 +286,10 @@ li {
     width: 10%;
 }
 
-.bottone-microfono {
+.fa-face-smile {
 
-    background-color: #f3eeea;
-    border: none;
-    height: 80%;
-    width: 10%;
-}
-
-.fa-microphone {
-
-    color: #b1b1b1;
     font-size: 20px;
+    color: #b1b1b1;
 }
 
 .input-chat {
@@ -284,30 +303,24 @@ li {
     border-radius: 5px;
 }
 
-.fa-face-smile {
+.bottone-microfono {
 
-    font-size: 20px;
+    background-color: #f3eeea;
+    border: none;
+    height: 80%;
+    width: 10%;
+}
+
+.fa-microphone {
+
     color: #b1b1b1;
+    font-size: 20px;
 }
+/* ---- */
 
-.active {
 
-    background-color: #e9ebeb;
-}
 
-.orario-messaggio {
-
-    align-self: flex-end;
-
-    font-size: 8px;
-}
-
-.testo-messaggio {
-
-    max-width: 88%;
-    word-wrap: break-word;
-}
-
+/* ---- */
 .message {
 
     position: relative;
@@ -325,6 +338,19 @@ li {
     border-radius: 12px;
 }
 
+.orario-messaggio {
+
+    align-self: flex-end;
+
+    font-size: 8px;
+}
+
+.testo-messaggio {
+
+    max-width: 88%;
+    word-wrap: break-word;
+}
+
 .dropdown-toggle {
 
     position: absolute;
@@ -336,17 +362,14 @@ li {
 
     display: none;
 }
-
-.message:hover .dropdown-toggle {
-    display: block;
-}
-
-/* ---------------- */
+/* ---- */
+/* / sezione destra (chat attiva) */
+/* ----------------------------------------------------------------------------- */
 
 
-/* ---------------- */
-/* classi date in base se 
-il messaggio è ricevuto o inviato */
+
+/* ----------------------------------------------------------------------------- */
+/* classi date in base se il messaggio è ricevuto o inviato */
 .white {
     
     background-color: white;
@@ -354,38 +377,38 @@ il messaggio è ricevuto o inviato */
 
 .sent {
     
-    display: flex;
-    
+    display: flex;  
     justify-content: end;
 }
 
 .received {
     
     display: flex;
-    
     justify-content: flex-start;
 }
+
 .green {
     
     background-color: #d5f9ba;
 }
-/* ---------------- */
-
-/* ---------------- */
-/* / sezione destra (chat attiva) */
+/* / classi date in base se il messaggio è ricevuto o inviato */
 /* ----------------------------------------------------------------------------- */
 
 
 /* ----------------------------------------------------------------------------- */
-
 /* Vista puntatore (pointer sugli elementi cliccabili) */
+
+.message:hover .dropdown-toggle {
+    display: block;
+}
+
 ul:hover,
 i:hover,
 .testo-notifica-2:hover,
 img {
     cursor: pointer;
 }
-
+/* / Vista puntatore (pointer sugli elementi cliccabili) */
 /* ----------------------------------------------------------------------------- */
 
 
