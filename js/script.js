@@ -1,3 +1,5 @@
+
+
 const { createApp } = Vue
 
 createApp({
@@ -10,6 +12,12 @@ createApp({
             nuovoMessaggio : '' ,
 
             ricerca : '',
+
+            scroll : scrollTo(0,10000),
+        // forma js puro
+            // let scroll = document.getElementById('chat-attiva')
+            // scroll = scrollTo(0,10000)
+        // forma js puro
 
             contatti: [
                 {
@@ -172,7 +180,77 @@ createApp({
                             status: 'received'
                         }
                     ],
-                }
+                },
+                {
+                    name: 'Fedez',
+                    avatar: 'img/avatar_4.jpg',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao, hai visto la mia pubblicità boolean?',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'Si, ma non mi sei venuto bene!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'Quindi non ti è piaciuta???',
+                            status: 'received'
+                        },                        {
+                            date: '10/01/2020 15:53:00',
+                            message: 'Certo...ma eri tu il problema, tutto qui!!',
+                            status: 'sent'
+                        }
+                    ],
+                },
+                {
+                    name: 'Marco',
+                    avatar: 'img/avatar_2.jpg',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '20/03/2020 16:30:00',
+                            message: 'Ciao come stai?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '20/03/2020 16:30:55',
+                            message: 'Bene grazie! Stasera ci vediamo?',
+                            status: 'received'
+                        },
+                        {
+                            date: '20/03/2020 16:35:00',
+                            message: 'Mi piacerebbe ma devo andare a fare la spesa.',
+                            status: 'sent'
+                        }
+                    ],
+                },
+                {
+                    name: 'Martina',
+                    avatar: 'img/avatar_5.jpg',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao Claudia, hai novità?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'Non ancora',
+                            status: 'received'
+                        },
+                            {
+                                date: '10/01/2020 15:51:00',
+                                message: 'Nessuna nuova, buona nuova',
+                                status: 'sent'
+                            }
+                    ],
+                },
             ],
 
 
@@ -240,8 +318,14 @@ createApp({
         },
 
         prendiUltimoMess(contatto) {
-            // ultimomess= contatto.messages.length - 1
-            return contatto.messages[contatto.messages.length - 1].message
+            if (contatto.messages.length == 1) {
+
+                return 'nessun messaggio'
+                
+            } else {
+
+                return contatto.messages[contatto.messages.length - 1].message
+            }
 
         },
 
@@ -253,10 +337,16 @@ createApp({
 
         eliminaMessaggio(index) {
 
-            this.contatti[this.indexActive].messages.splice(index , 1)
+                this.contatti[this.indexActive].messages.splice(index , 1)
 
+        },
+
+        scrollaGiu() {
+            scroll = scrollTo(0,10000)
         }
 
 
-    }
+
+    },
+
 }).mount('#app')
