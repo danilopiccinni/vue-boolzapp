@@ -261,21 +261,27 @@ createApp({
 
         addMessage() {
 
-            const DataOra = luxon.DateTime;
+            if (this.nuovoMessaggio == '') {
 
-            let DataOraCorrente = DataOra.now().toString('dd/mm/yyyy HH:mm:ss')
+            } else {
 
-            const newmessage = {
-                date: DataOraCorrente,
-                message : this.nuovoMessaggio,
-                status : 'sent'
+                const DataOra = luxon.DateTime;
+    
+                let DataOraCorrente = DataOra.now().toString('dd/mm/yyyy HH:mm:ss')
+    
+                const newmessage = {
+                    date: DataOraCorrente,
+                    message : this.nuovoMessaggio,
+                    status : 'sent'
+                }
+    
+                this.contatti[this.indexActive].messages.push(newmessage)
+                
+                this.nuovoMessaggio = ''
+    
+                setTimeout(this.rispostabot , 1000)
             }
 
-            this.contatti[this.indexActive].messages.push(newmessage)
-            
-            this.nuovoMessaggio = ''
-
-            setTimeout(this.rispostabot , 1000)
         },
 
         rispostabot() {
