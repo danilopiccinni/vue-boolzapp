@@ -27,7 +27,7 @@
         <div id="background">
 
             <!-- contenitore generale dell'interfaccia -->
-            <div class="cont-generale dark">
+            <div id="cont" :class="classe == true ? 'dark' : '' " class="cont-generale">
                 
                 <!-- sezione sinistra dell'interfaccia  -->
                 <div class="sezione-contatti">
@@ -45,7 +45,7 @@
                         <div class="contatti-dx">
                             <span><i class="fa-sharp fa-solid fa-circle-notch"></i></span>
                             <span><i class="fa-solid fa-message"></i></span>
-                            <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                            <span @click="classe == false ? attivaDark() : disattivaDark()"><i class="fa-solid fa-ellipsis-vertical"></i></span>
                             <span class="aggiunta-chat" @click="nuovaChat()"><strong>+</strong></span>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
 
         <!-- contenitore da visualizzare se non si ha selezionato nessuna chat -->
                 <div v-if="indexActive == null" class="cont-messaggio-benvenuto">
-                    <strong class="messaggio-benvenuto">
+                    <strong class="messaggio-benvenuto sezione-chat-attiva">
                         Benvenuto!! Scegli una chat per iniziare a scrivere ai tuoi contatti
                     </strong>
                 </div>

@@ -430,10 +430,90 @@ li {
 
 /* dark mode */
 
-.dark {
+
+
+.dark .sezione-contatti {
     
+    background-color: #3b3b3b;
+    border-right: 0.5px solid rgba(198, 198, 198, 0.681);
 }
 
+.dark .head {
+
+    background-color: #3b3b3b;
+}
+
+.dark .notifiche-onOff {
+
+    background-color: #548196;
+}
+
+.dark .fa-bell-slash {
+
+    color: #a6a6a6;
+}
+
+.dark .input-ricerca {
+    background-color: #a6a6a6;
+}
+
+.dark .testo-notifica-1 {
+
+color: #c7c7c7;
+}
+
+.dark .testo-notifica-2 {
+
+    color: #ffffff;
+}
+
+.dark .contatti-sx {
+    color: #a6a6a6;
+}
+
+.dark .orario {
+
+    color: #f0efef;
+
+}
+
+.dark .active {
+    color: black;
+    background-color: #acacac;
+}
+
+.dark .ultimo-messaggio {
+    color: #e0dfdf;
+}
+
+.dark .chat-bar {
+    background-color: #3b3b3b;
+}
+
+.dark .bottone-emoticons {
+
+    background-color: transparent;
+
+}
+
+.dark .bottone-microfono {
+
+    background-color: transparent;
+
+}
+
+.dark .chat-attiva { 
+
+
+    background-image: url(../img/wp7130410.jpg);
+
+}
+
+.dark .cont-messaggio-benvenuto {
+    color: white;
+
+    background-image: url(../img/wp7130410.jpg);
+}
 
 
 

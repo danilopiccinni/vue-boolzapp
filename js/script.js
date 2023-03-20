@@ -166,77 +166,10 @@ createApp({
                         }
                     ],
                 },
-                {
-                    name: 'Fedez',
-                    avatar: 'img/avatar_4.jpg',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, hai visto la mia pubblicità boolean?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'Si, ma non mi sei venuto bene!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'Quindi non ti è piaciuta???',
-                            status: 'received'
-                        },                        {
-                            date: '10/01/2020 15:53:00',
-                            message: 'Certo...ma eri tu il problema, tutto qui!!',
-                            status: 'sent'
-                        }
-                    ],
-                },
-                {
-                    name: 'Marco',
-                    avatar: 'img/avatar_2.jpg',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '20/03/2020 16:30:00',
-                            message: 'Ciao come stai?',
-                            status: 'sent'
-                        },
-                        {
-                            date: '20/03/2020 16:30:55',
-                            message: 'Bene grazie! Stasera ci vediamo?',
-                            status: 'received'
-                        },
-                        {
-                            date: '20/03/2020 16:35:00',
-                            message: 'Mi piacerebbe ma devo andare a fare la spesa.',
-                            status: 'sent'
-                        }
-                    ],
-                },
-                {
-                    name: 'Martina',
-                    avatar: 'img/avatar_5.jpg',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao Claudia, hai novità?',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'Non ancora',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'Nessuna nuova, buona nuova',
-                            status: 'sent'
-                        }
-                    ],
-                },
+
             ],
+
+            classe : false,
 
             staScrivendo : false,
 
@@ -399,8 +332,20 @@ createApp({
         cancellaChatEcontatto() {
             this.contatti.splice(this.indexActive , 1)
             this.indexActive = this.indexActive = null
+        },
+
+        attivaDark() {
+
+            console.log('click')
+            this.classe = true
+        },
+
+        disattivaDark() {
+            this.classe = false
         }
 
     },
 
 }).mount('#app')
+
+
