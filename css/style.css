@@ -84,7 +84,7 @@ li {
     justify-content: space-between;
     align-items: center;
 
-    height: 8%;
+    min-height: 50px;
     background-color: #eaeaea;
 }
 /* ---- */
@@ -282,7 +282,7 @@ li {
     overscroll-behavior-y: contain;
     scroll-snap-type: y proximity;
 
-    height: calc((92%) - 50px);
+    height: calc(100% - 100px);
     background-image: url(../img/mine.jpg);
 
 }
