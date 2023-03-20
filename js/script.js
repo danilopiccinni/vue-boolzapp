@@ -238,6 +238,8 @@ createApp({
                 },
             ],
 
+            staScrivendo : false,
+
             menuDrop: false,
 
             // valore ('indice') che aiuta a regolare la chat attiva ('active') visualizzata 
@@ -281,13 +283,20 @@ createApp({
                 this.contatti[this.indexActive].messages.push(newmessage)
                 // svuota il campo di input chat
                 this.nuovoMessaggio = ''
+
+                setTimeout(this.botScrive , 2000)
                 // un timer che ritorna una risposta automatica 
-                setTimeout(this.rispostabot , 1000)
+                setTimeout(this.rispostabot , 5000)
             }
+        },
+
+        botScrive() {
+            this.staScrivendo = true
         },
 
         // funzione dedicata alla risposta automatica del computer
         rispostabot() {
+
             indexRandom = Math.floor(Math.random() * (this.messaggiBot.length - 1) + 1)
             // constante che prende la data effettiva in quel momento che richiama la funzione tramite luxon
             const DataOra = luxon.DateTime;
@@ -301,6 +310,8 @@ createApp({
             }
             // aggiunge in memoria il nuovo messaggio creato prima 'newmessagebot'
             this.contatti[this.indexActive].messages.push(newmessagebot)
+
+            this.staScrivendo = false
             
         },
 

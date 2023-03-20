@@ -117,9 +117,12 @@
                                 <strong>{{contatti[indexActive].name}}</strong>     <!-- nome del contatto con cui si regolato con vue -->
 
                                 <!-- info ultimo messaggio sotto il contatto -->
-                                <span class="ultimo-messaggio sta-scrivendo">
+                                <span v-if="staScrivendo == false" class="ultimo-messaggio sta-scrivendo">
                                     <!-- visualizza l'orario dell'ultimo accesso del profilo con cui si sta chattando tramite vuejs -->
                                     Ultimo accesso {{ prendiOrario(contatti[indexActive]) }}   
+                                </span>
+                                <span v-else="staScrivendo == true" class="ultimo-messaggio sta-scrivendo">
+                                    Sta scrivendo...
                                 </span>
                             </div>
                         </div>
