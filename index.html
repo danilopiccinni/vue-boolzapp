@@ -121,6 +121,9 @@
                                     <!-- visualizza l'orario dell'ultimo accesso del profilo con cui si sta chattando tramite vuejs -->
                                     Ultimo accesso {{ prendiOrario(contatti[indexActive]) }}   
                                 </span>
+                                <span v-else-if="staScrivendo == 'Online'" class="ultimo-messaggio sta-scrivendo">
+                                    Online
+                                </span>
                                 <span v-else="staScrivendo == true" class="ultimo-messaggio sta-scrivendo">
                                     Sta scrivendo...
                                 </span>

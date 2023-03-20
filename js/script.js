@@ -284,10 +284,17 @@ createApp({
                 // svuota il campo di input chat
                 this.nuovoMessaggio = ''
 
+     
+                setTimeout(this.botOnline , 1000)
+
                 setTimeout(this.botScrive , 2000)
                 // un timer che ritorna una risposta automatica 
                 setTimeout(this.rispostabot , 5000)
             }
+        },
+
+        botOnline() {
+            this.staScrivendo = 'Online'
         },
 
         botScrive() {
