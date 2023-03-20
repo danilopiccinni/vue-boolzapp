@@ -17,6 +17,8 @@ createApp({
             // scroll = scrollTo(0,10000)
         // forma js puro
 
+            messaggiBot : ['ok' , 'no' , 'ma per piacere' , 'hai ragione'],
+
             // elenco dei contatti con tutti i dati utili
             contatti: [
                 {
@@ -285,6 +287,7 @@ createApp({
 
         // funzione dedicata alla risposta automatica del computer
         rispostabot() {
+            indexRandom = Math.floor(Math.random() * (this.messaggiBot.length - 1) + 1)
             // constante che prende la data effettiva in quel momento che richiama la funzione tramite luxon
             const DataOra = luxon.DateTime;
             // variabile creata al momento utile alla trasformazione della data e ora nel formato in cui ci è piu' utile
@@ -292,7 +295,7 @@ createApp({
             // costante/oggetto che crea un nuovo messaggio che ha al suo interno la data appena preparata e il messaggio standard 'ok'
             const newmessagebot = {
                 date: DataOraCorrente,
-                message : 'ok',
+                message : this.messaggiBot[indexRandom],
                 status : 'received',
             }
             // aggiunge in memoria il nuovo messaggio creato prima 'newmessagebot'
