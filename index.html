@@ -22,62 +22,61 @@
 
     <!-- contenitore standard per utilizzare vuejs -->
     <div id="app">
-
+        
         <!-- contenitore dedicado al background  -->
         <div id="background">
 
-             <!-- contenitore generale dell'interfaccia -->
-        <div class="cont-generale">
-
-            <!-- sezione sinistra dell'interfaccia  -->
-            <div class="sezione-contatti">
-
-                <!-- sezione in alto dedicato al proprio contatto -->
-                <div class="head">
-
-                    <!-- sezione interna sinistra con immagine di profilo e nome -->
-                    <div class="contatti-sx">
-                        <img src="img/avatar_io.jpg" alt="img">
-                        <span>Pola</span>
-                    </div>
-
-                    <!-- sezione interna destra con i pulsanti  -->
-                    <div class="contatti-dx">
-                        <span><i class="fa-sharp fa-solid fa-circle-notch"></i></span>
-                        <span><i class="fa-solid fa-message"></i></span>
-                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
-                    </div>
-
-                </div>
-
-                <!-- sezione per attivazione notifiche -->
-                <div class="notifiche-onOff">
-                    <div class="icona-notifica"><i class="fa-solid fa-bell-slash"></i></div>
-                    <div class="testo-notifica">
-                        <span class="testo-notifica-1">Ricevi notifiche di nuovi messaggi</span>
-                        <span class="testo-notifica-2">Attiva notifiche desktop</span>
-                    </div>
-                </div>
-
-                <!-- barra di unput di ricerca chat (pulsante ricerca e campo di testo) -->
-                <div class="ricerca-chat">
-
-                    <button class="bottone-ricerca"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input v-model="ricerca" type="text" class="input-ricerca" placeholder="Cerca o inizia una nuova chat">
+            <!-- contenitore generale dell'interfaccia -->
+            <div class="cont-generale">
                 
-                </div>
+                <!-- sezione sinistra dell'interfaccia  -->
+                <div class="sezione-contatti">
+                    
+                    <!-- sezione in alto dedicato al proprio contatto -->
+                    <div class="head">
+                        
+                        <!-- sezione interna sinistra con immagine di profilo e nome -->
+                        <div class="contatti-sx">
+                            <img src="img/avatar_io.jpg" alt="img">
+                            <span>Pola</span>
+                        </div>
+                        
+                        <!-- sezione interna destra con i pulsanti  -->
+                        <div class="contatti-dx">
+                            <span><i class="fa-sharp fa-solid fa-circle-notch"></i></span>
+                            <span><i class="fa-solid fa-message"></i></span>
+                            <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                        </div>
+                    </div>
+                    
+                    <!-- sezione per attivazione notifiche -->
+                    <div class="notifiche-onOff">
+                        <div class="icona-notifica"><i class="fa-solid fa-bell-slash"></i></div>
+                        <div class="testo-notifica">
+                            <span class="testo-notifica-1">Ricevi notifiche di nuovi messaggi</span>
+                            <span class="testo-notifica-2">Attiva notifiche desktop</span>
+                        </div>
+                    </div>
 
-                <!-- sezione lista dei contatti di chat gia avute -->
-                <div class="cont-lista-contatti">
+                    <!-- barra di unput di ricerca chat (pulsante ricerca e campo di testo) -->
+                    <div class="ricerca-chat">
 
-                    <!-- lista non ordinata dei contatti -->
-                    <ul class="lista-contatti">
-                                                                                                    <!-- evento click che assegna l'index ricavato dal ciclo al valore vuoto (indexActive) -->
-                                                                                                                                 <!-- v-bind sulla classe con un ternario per regolare la visione della chat attiva assegnando una una classe dedicata (active) -->
-                        <li  v-for="(contatto,index) in contatti" v-show="filtraRicerca(contatto)"  @click="indexActive = index" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">    <!-- ciclo che crea i vari contatti in un 'li' -->
+                        <button class="bottone-ricerca"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input v-model="ricerca" type="text" class="input-ricerca" placeholder="Cerca o inizia una nuova chat">
+                        
+                    </div>
+
+                    <!-- sezione lista dei contatti di chat gia avute -->
+                    <div class="cont-lista-contatti">
+
+                        <!-- lista non ordinata dei contatti -->
+                        <ul class="lista-contatti">
+                            <!-- evento click che assegna l'index ricavato dal ciclo al valore vuoto (indexActive) -->
+                            <!-- v-bind sulla classe con un ternario per regolare la visione della chat attiva assegnando una una classe dedicata (active) -->
+                            <li  v-for="(contatto,index) in contatti" v-show="filtraRicerca(contatto)"  @click="indexActive = index" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">    <!-- ciclo che crea i vari contatti in un 'li' -->
 
                                 <img :src=contatto.avatar alt="img">    <!-- regola l'immagine da visualizzare tramite vuejs -->
-
+                            
                                 <div class="interno-contatto">
                                     <span>{{contatto.name}}</span>  <!-- fa visualizzare il nome tramite vue js -->
 
@@ -90,82 +89,89 @@
                                 <span class="orario">
                                     {{prendiOrario(contatto)}}  <!-- visualizza l'orario riguardante ultimo messaggio della chat tramite vuejs -->
                                 </span>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
+        <!-- contenitore da visualizzare se non si ha selezionato nessuna chat -->
+                <div class="cont-messaggio-benvenuto" v-if="indexActive == null">
+                    <strong class="messaggio-benvenuto">
+                        Benvenuto!! Scegli una chat per iniziare a scrivere ai tuoi contatti
+                    </strong>
+                </div>
+        <!-- contenitore da visualizzare se si ha selezionato una chat -->
+                <!-- sezione destra dell'interfaccia -->
+                <div v-else class="sezione-chat-attiva">
 
-            <!-- sezione destra dell'interfaccia -->
-            <div class="sezione-chat-attiva">
+                    <!-- sezione in alto con il contatto della chat attiva,con cui si chatta -->
+                    <div class="head">
 
-                <!-- sezione in alto con il contatto della chat attiva,con cui si chatta -->
-                <div class="head">
+                        <!-- sezione interna sinistra con immagine e nome e ultimo accesso del profilo della chat aperta -->
+                        <div class="contatti-sx">
+                            <img :src=contatti[indexActive].avatar alt="img">    <!-- immagine del contatto con cui si chatta regolata con vuejs -->
 
-                    <!-- sezione interna sinistra con immagine e nome e ultimo accesso del profilo della chat aperta -->
-                    <div class="contatti-sx">
-                        <img :src=contatti[indexActive].avatar alt="img">    <!-- immagine del contatto con cui si chatta regolata con vuejs -->
+                            <!-- contenitore ulteriore interno per le info del contatto con cui si chatta (nome e ultimo accesso) -->
+                            <div class="interno-contatto">
+                                <strong>{{contatti[indexActive].name}}</strong>     <!-- nome del contatto con cui si regolato con vue -->
 
-                        <!-- contenitore ulteriore interno per le info del contatto con cui si chatta (nome e ultimo accesso) -->
-                        <div class="interno-contatto">
-                            <strong>{{contatti[indexActive].name}}</strong>     <!-- nome del contatto con cui si regolato con vue -->
+                                <!-- info ultimo messaggio sotto il contatto -->
+                                <span class="ultimo-messaggio">
+                                    Ultimo accesso {{ prendiOrario(contatti[indexActive]) }}   <!-- visualizza l'orario dell'ultimo accesso del profilo con cui si sta chattando tramite vuejs-->
+                                </span>
+                            </div>
+                        </div>
 
-                            <!-- info ultimo messaggio sotto il contatto -->
-                            <span class="ultimo-messaggio">
-                                Ultimo accesso {{ prendiOrario(contatti[indexActive]) }}   <!-- visualizza l'orario dell'ultimo accesso del profilo con cui si sta chattando tramite vuejs-->
-                            </span>
+                        <!-- sezione interna destra con i pulsanti -->
+                        <div class="contatti-dx">
+                            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                            <span><i class="fa-solid fa-paperclip"></i></span>
+                            <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
                         </div>
                     </div>
-
-                    <!-- sezione interna destra con i pulsanti -->
-                    <div class="contatti-dx">
-                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <span><i class="fa-solid fa-paperclip"></i></span>
-                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
-                    </div>
-                </div>
                     
-                <!-- sezione in cui si visualizzano i vari messaggi inviati e ricevuto della chat attiva -->
-                <div class="chat-attiva">
+                    <!-- sezione in cui si visualizzano i vari messaggi inviati e ricevuto della chat attiva -->
+                    <div class="chat-attiva">
 
-                    <!-- ciclo che crea i messaggi da visualizzare presenti in memoria con quel contatto -->
-                                <!-- ciclo v-for, che restituisce il messaggio e indice dello stesso, nella lista contatti tramite vuejs -->
-                                                                                            <!-- assegnazione classe tramite un ternario che distingue tra i messaggi ricevuti e inviati tramite vuejs -->
-                    <div v-for="(messaggio , index) in contatti[indexActive].messages" :class=" messaggio.status == 'sent' ? 'sent' : 'received'" class="messaggio">
-                                    <!-- classe regolata con un ternario per assegnare il colore del messaggio tramite vuejs -->
-                        <div :class="messaggio.status == 'sent' ? 'green' : 'white'" class="message">                        <!-- contenitore generale degli elementi da visualizzare in ogni messaggio -->
+                        <!-- ciclo che crea i messaggi da visualizzare presenti in memoria con quel contatto -->
+                        <!-- ciclo v-for, che restituisce il messaggio e indice dello stesso, nella lista contatti tramite vuejs -->
+                        <!-- assegnazione classe tramite un ternario che distingue tra i messaggi ricevuti e inviati tramite vuejs -->
+                        <div v-for="(messaggio , index) in contatti[indexActive].messages" :class=" messaggio.status == 'sent' ? 'sent' : 'received'" class="messaggio">
+                            <!-- classe regolata con un ternario per assegnare il colore del messaggio tramite vuejs -->
+                            <div :class="messaggio.status == 'sent' ? 'green' : 'white'" class="message">                        <!-- contenitore generale degli elementi da visualizzare in ogni messaggio -->
 
-                            <span class="testo-messaggio">{{messaggio.message}}</span>  <!-- testo del messaggio tramite vuejs -->
-                            <span class="orario orario-messaggio">{{prendiOrarioMessaggio(messaggio)}}</span>       <!-- orario del messaggio tramite funzione vuejs -->
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>     <!-- bottone per il menu a scomparsa con bootstrap -->
-                            
-                            <!-- contenitore del menu a scomparsa con bootstrap -->
-                            <div class="btn-group">
-                                <!-- lista non ordinata delle varie opzioni nel menu a scomparsa -->
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button">Rispondi al messaggio</button></li>  <!-- bottone dedicato alla risposta al messaggio relativo -->
-                                                <!-- click regolato tramite vuejs e funzione dedicata -->
-                                    <li><button @click="eliminaMessaggio(index)" class="dropdown-item" type="button">Cancella Messaggio</button></li>   <!-- bottone dedicato alla cancellazione del messaggio in questione -->
-                                    <li><button class="dropdown-item" type="button">Info messaggio</button></li>    <!-- bottone dedicato a visualizzare le info del messaggio in questione -->
-                                </ul>
-                            </div>
-                        </div> 
+                                <span class="testo-messaggio">{{messaggio.message}}</span>  <!-- testo del messaggio tramite vuejs -->
+                                <span class="orario orario-messaggio">{{prendiOrarioMessaggio(messaggio)}}</span>       <!-- orario del messaggio tramite funzione vuejs -->
+                                <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>     <!-- bottone per il menu a scomparsa con bootstrap -->
+
+                                <!-- contenitore del menu a scomparsa con bootstrap -->
+                                <div class="btn-group">
+                                    <!-- lista non ordinata delle varie opzioni nel menu a scomparsa -->
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><button class="dropdown-item" type="button">Rispondi al messaggio</button></li>  <!-- bottone dedicato alla risposta al messaggio relativo -->
+                                        <!-- click regolato tramite vuejs e funzione dedicata -->
+                                        <li><button @click="eliminaMessaggio(index)" class="dropdown-item" type="button">Cancella Messaggio</button></li>   <!-- bottone dedicato alla cancellazione del messaggio in questione -->
+                                        <li><button class="dropdown-item" type="button">Info messaggio</button></li>    <!-- bottone dedicato a visualizzare le info del messaggio in questione -->
+                                    </ul>
+                                </div>
+                            </div> 
+                        </div>
                     </div>
-                </div>
-                
-                <!-- sezione input di nuovi messaggi in basso  -->
-                <div class="chat-bar">
-                    <button class="bottone-emoticons"><i class="fa-regular fa-face-smile"></i></button>     
-                                                        <!-- alla pressione del tasto enter parte la funzione creata in vuejs per inviare e quindi aggiungere un nuovo messsaggio in memoria -->
-                    <input v-model="nuovoMessaggio" @keyup.enter="addMessage()" class="input-chat" type="text" placeholder="Scrivi un messaggio">   <!-- campo di testo per inviare un nuovo messaggio collegato con v-model a vuejs per regolare il filtraggio della lista cotatti -->
-                    <button class="bottone-microfono"><i class="fa-solid fa-microphone"></i></button>
+                            
+                    <!-- sezione input di nuovi messaggi in basso  -->
+                    <div class="chat-bar">
+                        <button class="bottone-emoticons"><i class="fa-regular fa-face-smile"></i></button>     
+                        <!-- alla pressione del tasto enter parte la funzione creata in vuejs per inviare e quindi aggiungere un nuovo messsaggio in memoria -->
+                        <input v-model="nuovoMessaggio" @keyup.enter="addMessage()" class="input-chat" type="text" placeholder="Scrivi un messaggio">   <!-- campo di testo per inviare un nuovo messaggio collegato con v-model a vuejs per regolare il filtraggio della lista cotatti -->
+                        <button class="bottone-microfono"><i class="fa-solid fa-microphone"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-        
+                
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/script.js"></script>
+        
 </body>
 </html>

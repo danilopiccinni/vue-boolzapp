@@ -22,6 +22,11 @@ img {
     border-radius: 50%;
 }
 
+.background {
+    
+    height: 100vh;
+}
+
 /* ----------------------------------------------------------------------------- */
 
 
@@ -36,7 +41,7 @@ img {
     margin: 50px auto;
     
     /* test */
-    width: 1000px;
+    min-width: 800px;
     height: 600px;
     border: 0.5px solid rgba(198, 198, 198, 0.681);
 }
@@ -238,6 +243,16 @@ li {
 
 /* ----------------------------------------------------------------------------- */
 /* sezione destra (chat attiva) */
+
+.cont-messaggio-benvenuto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    background-image: url(../img/mine.jpg);
+}
 
 /* ---- */
 .sezione-chat-attiva {
