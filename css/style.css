@@ -307,6 +307,8 @@ li {
     color: #b1b1b1;
 }
 
+
+
 .input-chat {
 
     height: 80%;
@@ -326,7 +328,8 @@ li {
     width: 10%;
 }
 
-.fa-microphone {
+.fa-microphone,
+.fa-paper-plane {
 
     color: #b1b1b1;
     font-size: 20px;
