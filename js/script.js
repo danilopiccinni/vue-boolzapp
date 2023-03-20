@@ -238,6 +238,7 @@ createApp({
                 },
             ],
 
+            menuDrop: false,
 
             // valore ('indice') che aiuta a regolare la chat attiva ('active') visualizzata 
             indexActive : null,
@@ -312,8 +313,7 @@ createApp({
                             + messaggio.date[15] 
         },
 
-        
-
+    
         // funzione dedicata a estrarre l'orario dell'ultimo messaggio, utile a visualizzarlo
         prendiOrario(contatto) {
             // condizione che controlla se ci siano ancora ultimi messaggi da vui prendere un orrario
@@ -359,6 +359,15 @@ createApp({
         // funzione dedicata allo scroll in basso (per ora superflua)
         scrollaGiu() {
             scroll = scrollTo(0,10000)
+        },
+
+        eliminaChat() {
+            this.contatti[this.indexActive].messages = []
+        },
+
+        cancellaChatEcontatto() {
+            this.contatti.splice(this.indexActive , 1)
+            this.indexActive = this.indexActive = null
         }
 
     },

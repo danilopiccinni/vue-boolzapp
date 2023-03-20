@@ -102,6 +102,7 @@ li {
 
 .contatti-dx {
 
+
     display: flex;
     gap: 12px;
     color: #b1b1b1;
@@ -254,9 +255,20 @@ li {
     background-image: url(../img/mine.jpg);
 }
 
+#myDropdown {
+    position: absolute;
+    top: 8%;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 5;
+}
+
 /* ---- */
 .sezione-chat-attiva {
-
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -270,7 +282,7 @@ li {
     overscroll-behavior-y: contain;
     scroll-snap-type: y proximity;
 
-    height: calc((100% - 8%) - 50px);
+    height: calc((92%) - 50px);
     background-image: url(../img/mine.jpg);
 
 }
@@ -411,6 +423,23 @@ li {
 }
 /* / classi date in base se il messaggio è ricevuto o inviato */
 /* ----------------------------------------------------------------------------- */
+
+
+
+/* ----------------------------------------------------------------------------- */
+
+/* dark mode */
+
+.dark {
+    
+}
+
+
+
+
+
+/* ----------------------------------------------------------------------------- */
+
 
 
 /* ----------------------------------------------------------------------------- */

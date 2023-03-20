@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body >
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <!-- contenitore standard per utilizzare vuejs -->
@@ -73,7 +73,7 @@
                         <ul class="lista-contatti">
                             <!-- evento click che assegna l'index ricavato dal ciclo al valore vuoto (indexActive) -->
                             <!-- v-bind sulla classe con un ternario per regolare la visione della chat attiva assegnando una una classe dedicata (active) -->
-                            <li  v-for="(contatto,index) in contatti" v-show="filtraRicerca(contatto)"  @click="indexActive = index" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">    <!-- ciclo che crea i vari contatti in un 'li' -->
+                            <li  v-for="(contatto,index) in contatti" v-show="filtraRicerca(contatto)"  @click="indexActive = index , menuDrop = false" :class=" index == indexActive ? 'active' : ''" class="contatti-sx">    <!-- ciclo che crea i vari contatti in un 'li' -->
 
                                 <img :src=contatto.avatar alt="img">    <!-- regola l'immagine da visualizzare tramite vuejs -->
                             
@@ -127,7 +127,12 @@
                         <div class="contatti-dx">
                             <span><i class="fa-solid fa-magnifying-glass"></i></span>
                             <span><i class="fa-solid fa-paperclip"></i></span>
-                            <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                            <span id="drop"><i  @click="menuDrop = !menuDrop" class="fa-solid fa-ellipsis-vertical"></i></span>
+                                <div  v-show="menuDrop" id="myDropdown" class="dropdown-content">
+                                  <button @click="eliminaChat()">cancella tutti i messaggi</button>
+                                  <button @click="cancellaChatEcontatto()">cancella chat</button>
+                                </div>
+
                         </div>
                     </div>
                     
