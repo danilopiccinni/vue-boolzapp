@@ -3,22 +3,6 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-
-            // valore ('indice') che aiuta a regolare la chat attiva ('active') visualizzata 
-            indexActive : 0,
-            // vaolore dichiarato inizialmente vuoto collegato con il v-model a un input in pagina dedicata a inserire un nuovo messaggio da inviare
-            nuovoMessaggio : '' ,
-            // valore dichiarato inizialmente vuoto collegato con il v-model a un input in pagina dedicata alla ricerca per filtrare la vista dei contatti
-            ricerca : '',
-            // funzione che serve a tenere giu la scrollbarr mano mano che si inviano messaggi
-            scroll : scrollTo(0,10000),
-        // forma js puro
-            // let scroll = document.getElementById('chat-attiva')
-            // scroll = scrollTo(0,10000)
-        // forma js puro
-
-            messaggiBot : ['ok' , 'no' , 'ma per piacere' , 'hai ragione'],
-
             // elenco dei contatti con tutti i dati utili
             contatti: [
                 {
@@ -253,6 +237,22 @@ createApp({
                     ],
                 },
             ],
+
+
+            // valore ('indice') che aiuta a regolare la chat attiva ('active') visualizzata 
+            indexActive : null,
+            // vaolore dichiarato inizialmente vuoto collegato con il v-model a un input in pagina dedicata a inserire un nuovo messaggio da inviare
+            nuovoMessaggio : '' ,
+            // valore dichiarato inizialmente vuoto collegato con il v-model a un input in pagina dedicata alla ricerca per filtrare la vista dei contatti
+            ricerca : '',
+            // funzione che serve a tenere giu la scrollbarr mano mano che si inviano messaggi
+            scroll : scrollTo(0,10000),
+        // forma js puro
+            // let scroll = document.getElementById('chat-attiva')
+            // scroll = scrollTo(0,10000)
+        // forma js puro
+
+            messaggiBot : ['ok' , 'no' , 'ma per piacere' , 'hai ragione'],
         }
     },
 
@@ -312,6 +312,8 @@ createApp({
                             + messaggio.date[15] 
         },
 
+        
+
         // funzione dedicata a estrarre l'orario dell'ultimo messaggio, utile a visualizzarlo
         prendiOrario(contatto) {
             // condizione che controlla se ci siano ancora ultimi messaggi da vui prendere un orrario
@@ -319,7 +321,7 @@ createApp({
                 // se è vero entra e si crea un indice massimo che si puo' trovare attualmente nell'array dei messaggi
                 ultimomess= contatto.messages.length - 1
                 // restituisce l'orario 
-                return orario = contatto.messages[ultimomess].date[11]
+                return  orario = contatto.messages[ultimomess].date[11]
                                 + contatto.messages[ultimomess].date[12] 
                                 + contatto.messages[ultimomess].date[13]
                                 + contatto.messages[ultimomess].date[14]

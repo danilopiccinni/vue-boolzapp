@@ -27,7 +27,7 @@
         <div id="background">
 
             <!-- contenitore generale dell'interfaccia -->
-            <div class="cont-generale">
+            <div class="cont-generale dark">
                 
                 <!-- sezione sinistra dell'interfaccia  -->
                 <div class="sezione-contatti">
@@ -95,7 +95,7 @@
                 </div>
 
         <!-- contenitore da visualizzare se non si ha selezionato nessuna chat -->
-                <div class="cont-messaggio-benvenuto" v-if="indexActive == null">
+                <div v-if="indexActive == null" class="cont-messaggio-benvenuto">
                     <strong class="messaggio-benvenuto">
                         Benvenuto!! Scegli una chat per iniziare a scrivere ai tuoi contatti
                     </strong>
@@ -116,8 +116,9 @@
                                 <strong>{{contatti[indexActive].name}}</strong>     <!-- nome del contatto con cui si regolato con vue -->
 
                                 <!-- info ultimo messaggio sotto il contatto -->
-                                <span class="ultimo-messaggio">
-                                    Ultimo accesso {{ prendiOrario(contatti[indexActive]) }}   <!-- visualizza l'orario dell'ultimo accesso del profilo con cui si sta chattando tramite vuejs-->
+                                <span class="ultimo-messaggio sta-scrivendo">
+                                    <!-- visualizza l'orario dell'ultimo accesso del profilo con cui si sta chattando tramite vuejs -->
+                                    Ultimo accesso {{ prendiOrario(contatti[indexActive]) }}   
                                 </span>
                             </div>
                         </div>
@@ -163,7 +164,7 @@
                         <button class="bottone-emoticons"><i class="fa-regular fa-face-smile"></i></button>     
                         <!-- alla pressione del tasto enter parte la funzione creata in vuejs per inviare e quindi aggiungere un nuovo messsaggio in memoria -->
                         <input v-model="nuovoMessaggio" @keyup.enter="addMessage()" class="input-chat" type="text" placeholder="Scrivi un messaggio">   <!-- campo di testo per inviare un nuovo messaggio collegato con v-model a vuejs per regolare il filtraggio della lista cotatti -->
-                        <button  class="bottone-microfono"><i :class="nuovoMessaggio == '' ? 'fa-solid fa-microphone' : 'fa-sharp fa-regular fa-paper-plane' " class=""></i></button>
+                        <button @click="addMessage()"  class="bottone-microfono"><i :class="nuovoMessaggio == '' ? 'fa-solid fa-microphone' : 'fa-sharp fa-regular fa-paper-plane' " class=""></i></button>
                     </div>
                 </div>
             </div>
