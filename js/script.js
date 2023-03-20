@@ -330,6 +330,19 @@ createApp({
 
         },
 
+        nuovaChat() {
+            nuovoNome = prompt('con chi vuoi chattare?')
+
+            creaChat =                 {
+                name: nuovoNome,
+                avatar: 'img/avatar_4.jpg',
+                visible: true,
+                messages: [],
+            }
+
+            this.contatti.push(creaChat)
+        },
+
         // funzione dedicata a estrarre e visualizzare l'ultimo messaggio della chat per poi visualizzarla sotto ogni contatto
         prendiUltimoMess(contatto) {   
             // condizione che controlla se la lunghezza dell'array dei messaggi del contatto è uguale a 1

@@ -452,7 +452,8 @@ li {
 ul:hover,
 i:hover,
 .testo-notifica-2:hover,
-img {
+img,
+.aggiunta-chat {
     cursor: pointer;
 }
 /* / Vista puntatore (pointer sugli elementi cliccabili) */
